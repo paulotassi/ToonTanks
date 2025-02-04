@@ -19,6 +19,13 @@ public:
 
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+public:	
+	// Called every frame
+	virtual void Tick(float DeltaTime) override;
+	
+protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
 
 private:
 
@@ -28,16 +35,15 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Tank Components", meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* SpringArm;
 
-	void Move(float Value);
-
-	void Turn(float Value);
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tank Details", meta = (AllowPrivateAccess = "true"))
 	float Speed = 200;
 
-		UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tank Details", meta = (AllowPrivateAccess = "true"))
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Tank Details", meta = (AllowPrivateAccess = "true"))
 	float TurnSpeed = 200;
 
-
+	void Move(float Value);
+	void Turn(float Value);
+	
+	APlayerController* PlayerControllerRef;
 
 };
