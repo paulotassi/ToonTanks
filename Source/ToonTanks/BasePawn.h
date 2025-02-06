@@ -15,10 +15,12 @@ class TOONTANKS_API ABasePawn : public APawn
 public:
 	// Sets default values for this pawn's properties
 	ABasePawn();
+	void HandleDestruction();
 
 protected:
 
 	void RotateTurret(FVector LookAtTarget);
+	void Fire();
 
 private:
 
@@ -33,5 +35,8 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = "true"))
 	USceneComponent* ProjectileSpawnPoint;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Combat", meta = (AllowPrivateAccess = "true"))
+	TSubclassOf<class ABaseProjectile> ProjectileClass;
 
 };

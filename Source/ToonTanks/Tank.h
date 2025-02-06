@@ -16,8 +16,9 @@ class TOONTANKS_API ATank : public ABasePawn
 	
 public:
 	ATank();
-
+	void HandleDestruction();
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	APlayerController* GetTankPlayerController() const {return TankPlayerController;};
 
 public:	
 	// Called every frame
@@ -44,6 +45,6 @@ private:
 	void Move(float Value);
 	void Turn(float Value);
 	
-	APlayerController* PlayerControllerRef;
+	APlayerController* TankPlayerController;
 
 };
