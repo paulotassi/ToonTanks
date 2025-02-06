@@ -18,7 +18,9 @@ public:
 protected:
 
 	virtual void BeginPlay() override;
-
+	
+	UFUNCTION(BlueprintImplementableEvent)
+	void StartGame();
 
 private:
 
@@ -27,4 +29,6 @@ private:
 
 	float StartDelay = 3.f;
 	void HandleGameStart();
+
+
 };
